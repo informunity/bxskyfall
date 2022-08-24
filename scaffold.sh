@@ -37,14 +37,24 @@ add_composer() {
 {
     "autoload": {
         "psr-4": {"InformUnity\\\\": "classes/informunity/"}
-    }
+    },
+    "require": {
+        "arrilot/bitrix-migrations": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:informunity/bitrix-migrations.git"
+        }
+    ]
+
 }
 EOF
     php composer.phar clear-cache
     php composer.phar selfupdate
     php composer.phar dump-autoload
     php composer.phar require vlucas/phpdotenv
-    php composer.phar require informunity/bitrix-migrations --dev
+    # php composer.phar require informunity/bitrix-migrations --dev
     php composer.phar require kint-php/kint --dev
     php composer.phar require nesbot/carbon
 
@@ -64,7 +74,6 @@ fillInit() {
     cat > $FILE_WRITE <<EOF
 <?php
 require \$_SERVER['DOCUMENT_ROOT'] . '/local/vendor/autoload.php';
-
 \$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../');
 \$dotenv->load();
 EOF
@@ -72,4 +81,4 @@ EOF
 
 
 ## Main programm ##
-main
+main 
