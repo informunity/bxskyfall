@@ -44,7 +44,7 @@ EOF
     php composer.phar selfupdate
     php composer.phar dump-autoload
     php composer.phar require vlucas/phpdotenv
-    php composer.phar require arrilot/bitrix-migrations --dev
+    php composer.phar require informunity/bitrix-migrations --dev
     php composer.phar require kint-php/kint --dev
     php composer.phar require nesbot/carbon
 
